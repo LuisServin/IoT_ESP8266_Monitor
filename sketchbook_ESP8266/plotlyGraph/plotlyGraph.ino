@@ -1,5 +1,7 @@
 #include <ESP8266WiFi.h>
 
+#define BAUD_RATE 9600
+
 #define ssid      "Hogwarts"
 #define password  "lacasa37304"
 #define userName  "luis.alfredo.sega"
@@ -10,7 +12,7 @@
 #define maxpoints "30"
 #define world_readable  true
 #define convertTimestamp  true
-#define timezone  "Australia/Malbourne"
+#define timezone  "America/Mexico_City"
 
 char *tokens[nTraces] = {"af5oolbi8s"};
 char stream_site[25] = {0};
@@ -18,9 +20,9 @@ char stream_site[25] = {0};
 WiFiClient client;
 
 /* ----------------- Setup -----------------*/
-void setup() {
+void setup() {  
   // Setup Serial
-  Serial.begin(9600);
+  Serial.begin(BAUD_RATE);
   delay(2000);
   Serial.println();
   Serial.println();
@@ -203,7 +205,7 @@ void plotly_plot(unsigned long x, int y, char* token)
     "\r\n{\"x\": " + xString + ", \"y\": " + yString +
     ", \"streamtoken\": \"" + token + "\"}\n\r\n" + "0\r\n\r\n"
   );
-  //Serial.println("Data Sent!");
+  Serial.println("Data Sent!");
 }
 
 
